@@ -1,0 +1,17 @@
+yg dipelajari di project ini :
+- registration
+- login system
+- user management
+- change password
+- forgot password
+
+1. buat folder assets & vendor
+2. folder vendor diisi sbadmin2
+3. isi base_url
+4. hapus isi index_page di config.php
+5. $autoload['helper'] = array('url','file','security');
+- url utk menjalankan base_url
+- file utk upload file (foto)
+- security utk enkripsi password
+6. $autoload['libraries'] = array('session','database','email');
+7. $route['default_controller'] = 'auth'; // di routes.php
