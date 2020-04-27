@@ -20,37 +20,44 @@
     $this->db->join('user_access_menu', 'user_menu.id = user_access_menu.menu_id'); // parameter kedua menyamakan id (primary & foreign key (id dr user_menu & menu_id dr user_access_menu))
     $this->db->where('user_access_menu.role_id = ' . $role_id);
     $this->db->order_by('user_access_menu.menu_id','ASC');
-    $menu = $this->db->get()->result_array();
+    $menus = $this->db->get()->result_array();
   ?>
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    Admin
-  </div>
+  <!-- Looping Menu -->
+  <?php foreach ($menus as $menu): ?>
+    <div class="sidebar-heading">
+      <?php echo $menu['menu']; ?>
+    </div>
 
-  <!-- Nav Item - Dashboard -->
-  <li class="nav-item">
-    <a class="nav-link" href="index.html">
-      <i class="fas fa-fw fa-tachometer-alt"></i>
-      <span>Dashboard</span></a>
-  </li>
+  <!-- Siapkan Submenu Sesuai Menu -->
+  <?php
+    // $this->db->select('*');
+    $menu_id = $menu['id']; // mengambil id dr query di atas
+    $this->db->from('user_sub_menu');
+    $this->db->where('menu_id = ' . $menu_id);
+    $this->db->where('is_active = 1');
+    $this->db->order_by('menu_id','ASC');
+    $subMenus = $this->db->get()->result_array();
+  ?>
 
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+    <?php foreach ($subMenus as $subMenu): ?>
+      <?php if ($title == $subMenu['title']): ?>
+        <li class="nav-item active">
+      <?php else: ?>
+        <li class="nav-item">
+      <?php endif; ?>
+      <!-- Nav Item - Dashboard -->
+        <a class="nav-link" href="<?php echo base_url($subMenu['url']); ?>">
+          <i class="<?php echo $subMenu['icon']; ?>"></i>
+          <span><?php echo $subMenu['title']; ?></span>
+        </a>
+      </li>
+    <?php endforeach; ?>
 
-  <!-- Heading -->
-  <div class="sidebar-heading">
-    User
-  </div>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-  <li class="nav-item">
-    <a class="nav-link" href="charts.html">
-      <i class="fas fa-fw fa-user"></i>
-      <span>My Profile</span></a>
-  </li>
-
-  <!-- Divider -->
-  <hr class="sidebar-divider">
+  <?php endforeach; ?>
 
   <li class="nav-item">
     <a class="nav-link" href="<?php echo base_url('auth/logout'); ?>">

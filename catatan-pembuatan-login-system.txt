@@ -15,3 +15,14 @@ yg dipelajari di project ini :
 - security utk enkripsi password
 6. $autoload['libraries'] = array('session','database','email');
 7. $route['default_controller'] = 'auth'; // di routes.php
+
+8. daftar database yg penting:
+- user = menyimpan data user (email, password, name, dll)
+- user_menu berisi Admin, User, Menu (setiap menu punya controller)
+- user_role berisi:
+  - id 1, role Admin
+  - id 2, role Member
+- user_sub_menu = menu yg akan ditampilkan ke sidebar (diakses menggunakan menu_id)
+- user_access_menu = table yg berisi id, role_id, menu_id (table ini menyimpan data hak akses utk setiap user menggunakan role_id & menu_id)
+
+catatan: role_id = id di table user_role, menu_id = id di table user_menu
