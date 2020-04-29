@@ -4,6 +4,9 @@
   <!-- Page Heading -->
   <h1 class="h3 mb-4 text-gray-800"><?php echo $title; ?></h1>
 
+  <!-- jika form berhasil muncul ini -->
+  <?php echo $this->session->flashdata('register'); ?>
+
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
       <div class="col-md-4">

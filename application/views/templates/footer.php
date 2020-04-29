@@ -47,6 +47,31 @@
 
 <!-- Custom scripts for all pages-->
 <script src="<?php echo base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
+<script type="text/javascript">
+  // ini utk mengganti nama input saat gambar dipilih (di halaman edit profile)
+  $('.custom-file-input').on('change',function() {
+    let fileName = $(this).val().split('\\').pop();
+    $(this).next('.custom-file-label').addClass('selected').html(fileName);
+  });
+
+  // ini utk mengganti access user saat kotak dicentang
+  $('.form-check-input').on('click',function() {
+    const menuId = $(this).data('menu');
+    const roleId = $(this).data('role');
+
+    $.ajax({
+      url: "<?php echo base_url('admin/change_access'); ?>",
+      type: 'post',
+      data: {
+        menuId: menuId,
+        roleId: roleId
+      },
+      success: function() {
+        document.location.href = "<?php echo base_url('admin/role_access/'); ?>" + roleId;
+      }
+    });
+  });
+</script>
 
 </body>
 

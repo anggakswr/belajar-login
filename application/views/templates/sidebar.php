@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -47,7 +47,7 @@
         <li class="nav-item">
       <?php endif; ?>
       <!-- Nav Item - Dashboard -->
-        <a class="nav-link" href="<?php echo base_url($subMenu['url']); ?>">
+        <a class="nav-link pb-0" href="<?php echo base_url($subMenu['url']); ?>">
           <i class="<?php echo $subMenu['icon']; ?>"></i>
           <span><?php echo $subMenu['title']; ?></span>
         </a>
@@ -55,7 +55,7 @@
     <?php endforeach; ?>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mt-3">
 
   <?php endforeach; ?>
 

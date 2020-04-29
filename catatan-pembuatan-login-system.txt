@@ -26,3 +26,12 @@ yg dipelajari di project ini :
 - user_access_menu = table yg berisi id, role_id, menu_id (table ini menyimpan data hak akses utk setiap user menggunakan role_id & menu_id)
 
 catatan: role_id = id di table user_role, menu_id = id di table user_menu
+
+9. membuat helper baru bernama login
+- masuk folder helper, bikin file login_helper.php
+- msk autoload.php, isi $autoload['helper'] = array('url','file','security','login');
+
+kekurangan sistem :
+1. controller tdk boleh memuat html (mgkn bs diedit nnt)
+2. ketika user tdk diaktivasi email lbh dr 24 jam, email tdk bs diaktivasi, tp data user msh ada di db dg is_active = 0
+3. fitur edit & delete tdk ada di sistem ini (krn sistem ini cm utk belajar login system saja)

@@ -79,7 +79,7 @@
             <select class="form-control" id="menu_id" name="menu_id">
               <option value="">-- Select menu --</option>
               <?php foreach ($menus as $menu): ?>
-                <option value="<?php echo $menu['id']; ?>"><?php echo $menu['id']; ?></option>
+                <option value="<?php echo $menu['id']; ?>"><?php echo $menu['menu']; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

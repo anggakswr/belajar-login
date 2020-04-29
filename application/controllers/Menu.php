@@ -5,6 +5,10 @@ class Menu extends CI_Controller {
 
   public function __construct() {
     parent::__construct();
+
+    // jika user blm login
+    is_logged_in(); // helper buatan sendiri
+
     $this->load->library('form_validation');
   }
 
